@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0" stop-color="#2563eb" />
+      <stop offset="1" stop-color="#60a5fa" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#081028" />
+  <rect x="40" y="40" width="1520" height="820" rx="20" fill="url(#g2)" opacity="0.08" />
+  <g fill="#dceeff" font-family="Space Grotesk, sans-serif">
+    <text x="50%" y="45%" font-size="52" text-anchor="middle" font-weight="700">JoinTalent e-Learn</text>
+    <text x="50%" y="55%" font-size="28" text-anchor="middle">EdTech Platform</text>
+  </g>
+</svg>
