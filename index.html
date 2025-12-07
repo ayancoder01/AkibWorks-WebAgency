@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akibwork | Scalable Web Solutions</title>
+    <!-- Primary favicon: lightweight SVG for browser tabs -->
+    <link rel="icon" href="/AkibWorks-WebAgency/favicon.svg" type="image/svg+xml">
+    <!-- Fallback to logo.svg for environments that prefer it -->
+    <link rel="alternate icon" href="/AkibWorks-WebAgency/logo.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0b1020">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Brand Colors (Themeable via body class) */
+        --brand-50: #f0fdfa;
+        --brand-100: #ccfbf1;
+        --brand-200: #99f6e4;
+        --brand-300: #5eead4;
+        --brand-400: #2dd4bf;
+        --brand-500: #14b8a6;
+        --brand-600: #0d9488;
+        --brand-700: #0f766e;
+        --brand-800: #115e59;
+        --brand-900: #134e4a;
+        --brand-950: #042f2e;
+
+        /* Semantic Colors - LUXURY DARK (Default) */
+        --bg-950: #09090b; /* Zinc 950 */
+        --bg-900: #18181b; /* Zinc 900 */
+        --bg-800: #27272a; /* Zinc 800 */
+        --text-main: #fafafa;
+        --text-muted: #a1a1aa; /* Zinc 400 */
+        --border-color: #27272a; /* Solid Zinc 800 */
+        --glass-bg: rgba(9, 9, 11, 0.8);
+        --input-bg: rgba(24, 24, 27, 0.6);
+        
+        /* Background Layers */
+        --bg-layer-1: rgba(255, 255, 255, 0.03);
+        --bg-layer-2: rgba(255, 255, 255, 0.01);
+      }
+
+      /* Light Mode Overrides */
+      body.light-mode {
+        --bg-950: #ffffff;
+        --bg-900: #f4f4f5; /* Zinc 100 */
+        --bg-800: #e4e4e7; /* Zinc 200 */
+        --text-main: #09090b;
+        --text-muted: #52525b; /* Zinc 600 - Darker for readability */
+        --border-color: #e4e4e7;
+        --glass-bg: rgba(255, 255, 255, 0.85);
+        --input-bg: rgba(244, 244, 245, 0.6);
+        
+        /* Background Layers Light */
+        --bg-layer-1: rgba(0, 0, 0, 0.03);
+        --bg-layer-2: rgba(0, 0, 0, 0.01);
+      }
+
+      body.theme-blue { --brand-500: #3b82f6; --brand-400: #60a5fa; --brand-600: #2563eb; }
+      body.theme-violet { --brand-500: #8b5cf6; --brand-400: #a78bfa; --brand-600: #7c3aed; }
+      body.theme-rose { --brand-500: #f43f5e; --brand-400: #fb7185; --brand-600: #e11d48; }
+      body.theme-amber { --brand-500: #f59e0b; --brand-400: #fbbf24; --brand-600: #d97706; }
+      body.theme-emerald { --brand-500: #10b981; --brand-400: #34d399; --brand-600: #059669; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        background-color: var(--bg-950);
+        color: var(--text-main);
+        
+        /* Architectural Tech Background */
+        background-image: 
+          linear-gradient(135deg, var(--bg-layer-1) 25%, transparent 25%), 
+          linear-gradient(225deg, var(--bg-layer-1) 25%, transparent 25%), 
+          linear-gradient(45deg, var(--bg-layer-1) 25%, transparent 25%), 
+          linear-gradient(315deg, var(--bg-layer-1) 25%, transparent 25%),
+          radial-gradient(circle at 50% 0%, var(--bg-800) 0%, transparent 80%);
+        background-size: 80px 80px, 80px 80px, 80px 80px, 80px 80px, 100% 100%;
+        background-position: 0 0, 0 0, 40px 40px, 40px 40px, 0 0;
+        background-attachment: fixed;
+        
+        /* Modern Arrow Cursor */
+        cursor: default;
+      }
+
+      /* Custom Cursor */
+      body {
+        cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" fill="%2314b8a6" stroke="white" stroke-width="2"/></svg>') 0 0, auto;
+      }
+      a, button, [role="button"] {
+        cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="4" stroke="%2314b8a6" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="%2314b8a6"/></svg>') 12 12, pointer;
+      }
+
+      /* -------------------------------
+         PREMIUM ANIMATIONS
+         ------------------------------- */
+
+      /* "Magnetic Swipe" Button */
+      .btn-tech {
+        position: relative;
+        background: transparent;
+        color: var(--text-main);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        isolation: isolate;
+      }
+
+      .btn-tech::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: transform 0.6s ease;
+        z-index: -1;
+      }
+
+      .btn-tech:hover {
+        background: var(--brand-500);
+        border-color: var(--brand-500);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -10px var(--brand-500);
+      }
+      
+      .btn-tech:hover::before {
+        transform: translateX(200%);
+      }
+      
+      .btn-tech:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+      
+      /* Ghost Variant */
+      .btn-tech-ghost {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+      .btn-tech-ghost:hover {
+        color: var(--text-main);
+        background: var(--bg-900);
+      }
+
+      /* Pixel Nav Links */
+      .nav-link-pixel {
+        position: relative;
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 500;
+        color: var(--text-muted);
+        transition: color 0.3s ease;
+        padding-left: 12px;
+      }
+      
+      .nav-link-pixel::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%) scale(0);
+        width: 6px;
+        height: 6px;
+        background: var(--brand-500);
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .nav-link-pixel:hover {
+        color: var(--text-main);
+      }
+      
+      .nav-link-pixel:hover::before {
+        transform: translateY(-50%) scale(1);
+      }
+
+      /* Utilities */
+      .text-shadow-glow {
+        text-shadow: 0 0 20px var(--brand-500);
+      }
+      .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--border-color);
+      }
+      
+      /* Clip Paths */
+      .clip-angled {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+      }
+      .clip-button {
+        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-950);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--bg-800);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--brand-500);
+      }
+
+      /* Cinematic Layout Reveal Animation - SOFT FOCUS */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+        filter: blur(12px);
+        transition: 
+          opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+          filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity, filter;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+      
+      .reveal-left { opacity: 0; transform: translateX(-40px); filter: blur(8px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+      .reveal-left.active { opacity: 1; transform: translateX(0); filter: blur(0); }
+      
+      .reveal-right { opacity: 0; transform: translateX(40px); filter: blur(8px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+      .reveal-right.active { opacity: 1; transform: translateX(0); filter: blur(0); }
+
+      .stagger-1 { transition-delay: 100ms; }
+      .stagger-2 { transition-delay: 200ms; }
+      .stagger-3 { transition-delay: 300ms; }
+
+      /* Helpers for delay */
+      .animation-delay-2000 { animation-delay: 2s; }
+      .animation-delay-500 { animation-delay: 0.5s; }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              brand: {
+                400: 'var(--brand-400)',
+                500: 'var(--brand-500)',
+                600: 'var(--brand-600)',
+              },
+              dark: {
+                950: 'var(--bg-950)',
+                900: 'var(--bg-900)',
+                800: 'var(--bg-800)',
+              },
+              border: 'var(--border-color)',
+              glass: 'var(--glass-bg)',
+              primary: 'var(--text-main)',
+              muted: 'var(--text-muted)',
+              input: 'var(--input-bg)',
+            },
+            keyframes: {
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              }
+            },
+            animation: {
+              'blob': 'blob 10s infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fadeInUp': 'fadeInUp 0.8s ease-out forwards',
+              'fadeIn': 'fadeIn 0.5s ease-out forwards',
+            }
+          }
+        }
+      }
+    </script>
+
+  <link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+        "react/": "https://aistudiocdn.com/react@^19.2.1/",
+        "react": "https://aistudiocdn.com/react@^19.2.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+      }
+    }
+    </script>
+  <script type="module" crossorigin src="/AkibWorks-WebAgency/assets/index-DJ43ik38.js"></script>
+</head>
+  <body class="bg-dark-950 text-primary antialiased">
+    <div id="root"></div>
+</body>
+</html>
